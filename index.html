@@ -8,71 +8,59 @@
 </head>
 <body>
 
-  <!-- Popup d'information -->
-  <div id="popup-info" class="glass-popup">
-    <div class="popup-content">
-      <h2>Information</h2>
-      <p>
-        Cet événement n'est pas affilié à Scratch / MIT.<br>
-        Il s'agit d'une initiative communautaire pour célébrer le studio <a href="https://scratch.mit.edu/studios/37057539" target="_blank">LE MEILLEUR DE SCRATCH 2026</a>.
-      </p>
-      <button id="close-popup">J'ai compris</button>
-    </div>
+<!-- Popup info -->
+<div id="popup-info" class="glass-popup">
+  <div class="popup-content">
+    <h2>Information</h2>
+    <p>
+      Cet événement n'est pas affilié à Scratch / MIT.<br>
+      Il s'agit d'une initiative communautaire pour célébrer le studio 
+      <a href="https://scratch.mit.edu/studios/37057539" target="_blank">LE MEILLEUR DE SCRATCH 2026</a>.
+    </p>
+    <button id="close-popup">J'ai compris</button>
   </div>
+</div>
 
-  <header class="glass">
-    <h1>LE MEILLEUR DE SCRATCH 2026</h1>
-    <p>Participe à l'évènement Scratch de l'année et découvre les meilleurs projets !</p>
-  </header>
+<header class="glass">
+  <h1>LE MEILLEUR DE SCRATCH 2026</h1>
+  <p>Vote pour tes projets préférés et découvre les meilleurs du studio !</p>
+</header>
 
-  <main>
-    <!-- Tutoriel -->
-    <section id="tutorial" class="glass category-section">
-      <h2>Tutoriel</h2>
-      <ol>
-        <li>Rejoins le studio <a href="https://scratch.mit.edu/studios/37057539" target="_blank">LE MEILLEUR DE SCRATCH 2026</a>.</li>
-        <li>Ajoute ton projet dans le studio.</li>
-        <li>Vote pour tes projets favoris et découvre les autres créations.</li>
-      </ol>
-    </section>
+<main>
 
-    <!-- Galerie de projets -->
-    <section id="projects" class="glass category-section">
-      <h2>Projets récents</h2>
-      <div class="projects-gallery" id="projects-list">
-        <!-- Projet exemple -->
-        <div class="project-card">
-          <iframe src="https://scratch.mit.edu/projects/855968961/embed" width="285" height="200" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-          <p>Projet Exemple 1</p>
-        </div>
-        <div class="project-card">
-          <iframe src="https://scratch.mit.edu/projects/855970123/embed" width="285" height="200" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-          <p>Projet Exemple 2</p>
-        </div>
-      </div>
-    </section>
+  <!-- Tutoriel -->
+  <section id="tutorial" class="glass category-section">
+    <h2>Tutoriel</h2>
+    <ol>
+      <li>Rejoins le studio <a href="https://scratch.mit.edu/studios/37057539" target="_blank">LE MEILLEUR DE SCRATCH 2026</a>.</li>
+      <li>Ajoute ton projet dans le studio.</li>
+      <li>Vote pour tes projets favoris.</li>
+    </ol>
+  </section>
 
-    <!-- Page du studio intégrée -->
-    <section id="studio-page" class="glass category-section">
-      <h2>Page du studio</h2>
-      <iframe src="https://scratch.mit.edu/studios/37057539" width="100%" height="600" frameborder="0" scrolling="yes"></iframe>
-      <p>Parcourir tous les projets directement sur la page du studio.</p>
-    </section>
+  <!-- Galerie de projets -->
+  <section id="projects" class="glass category-section">
+    <h2>Projets du studio</h2>
+    <div class="projects-gallery" id="projects-list">
+      <!-- Les projets seront ajoutés dynamiquement ici -->
+    </div>
+  </section>
 
-    <!-- Voteurs -->
-    <section id="voters" class="glass category-section">
-      <h2>Voteurs</h2>
-      <ul class="voter-list">
-        <li>Je_sa1s_pas</li>
-        <li>skygame_scratch</li>
-      </ul>
-    </section>
-  </main>
+  <!-- Voteurs -->
+  <section id="voters" class="glass category-section">
+    <h2>Voteurs</h2>
+    <ul class="voter-list" id="voter-list">
+      <li>Je_sa1s_pas</li>
+      <li>skygame_scratch</li>
+    </ul>
+  </section>
 
-  <footer class="glass">
-    <p>&copy; 2026 LE MEILLEUR DE SCRATCH</p>
-  </footer>
+</main>
 
-  <script src="script.js"></script>
+<footer class="glass">
+  <p>&copy; 2026 LE MEILLEUR DE SCRATCH</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
