@@ -1,0 +1,190 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #aee1f9 0%, #f9f6ff 100%);
+  min-height: 100vh;
+  margin: 0;
+  color: #222;
+}
+
+/* Liquid Glass Effect */
+.glass {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px 0 rgba(31,38,135,0.15);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border-radius: 1em;
+  border: 1px solid rgba(255,255,255,0.18);
+  margin: 2em auto;
+  padding: 2em;
+  max-width: 700px;
+}
+
+/* Popup Glass Effect */
+.glass-popup {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(100,180,255,0.15);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.popup-content {
+  background: rgba(255,255,255,0.35);
+  border-radius: 1em;
+  padding: 2em 2em 1em 2em;
+  box-shadow: 0 8px 32px #0002;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.18);
+  max-width: 350px;
+}
+.popup-content h2 {
+  margin-top: 0;
+}
+.popup-content button {
+  margin-top: 1.5em;
+  padding: 0.7em 2em;
+  border-radius: 0.5em;
+  border: none;
+  background: #0099ff;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s;
+}
+.popup-content button:hover {
+  background: #0077cc;
+}
+
+header.glass {
+  margin-top: 2em;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 0.5em 0;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  color: #0099ff;
+  text-shadow: 0 2px 8px #0002;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-bottom: 1em;
+  padding: 1em 0;
+}
+
+.stats div {
+  background: rgba(255,255,255,0.3);
+  border-radius: 0.7em;
+  box-shadow: 0 2px 8px #0001;
+  padding: 1em;
+  text-align: center;
+  min-width: 160px;
+}
+
+.stats h2 {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+#project-count, #participant-count {
+  font-size: 2em;
+  color: #0099ff;
+  font-weight: bold;
+}
+
+#projects-section {
+  margin-top: 2em;
+  padding: 2em;
+}
+
+#projects-list {
+  list-style: none;
+  padding: 0;
+}
+
+#projects-list li {
+  margin-bottom: 2em;
+  padding: 1.5em;
+  background: rgba(255,255,255,0.6);
+  border-radius: 1em;
+  box-shadow: 0 4px 16px #0002;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* Liquid glass effect */
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.project-actions {
+  margin-top: 0.7em;
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+}
+
+.like-btn, .dislike-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.7em;
+  cursor: pointer;
+  transition: transform 0.1s;
+  filter: drop-shadow(0 2px 4px #0099ff33);
+}
+
+.like-btn.liked, .dislike-btn.disliked {
+  color: #009900;
+  font-weight: bold;
+  transform: scale(1.1);
+}
+
+.dislike-btn.disliked {
+  color: #cc2222;
+}
+
+.like-count, .dislike-count {
+  font-size: 1.1em;
+  min-width: 2em;
+  display: inline-block;
+  text-align: center;
+}
+
+footer.glass {
+  text-align: center;
+  font-size: 1em;
+  color: #222;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .stats {
+    flex-direction: column;
+    gap: 1em;
+  }
+  .glass, #projects-section {
+    max-width: 96vw;
+    padding: 1em;
+  }
+}
+a {
+  color: #0099ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  text-decoration: underline;
+}
