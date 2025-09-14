@@ -17,6 +17,9 @@ header p{font-size:1em;color:#333;}
 .projects-gallery{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
 .project-card{background:rgba(255,255,255,0.2);border-radius:15px;padding:10px;backdrop-filter:blur(15px);text-align:center;transition:transform 0.3s;}
 .project-card:hover{transform:scale(1.05);}
+.project-actions{margin-top:5px;}
+.project-actions button{cursor:pointer;margin:0 5px;padding:5px 10px;border:none;border-radius:8px;background:rgba(255,255,255,0.3);transition:0.3s;}
+.project-actions button:hover{background:rgba(255,255,255,0.5);}
 
 /* Voteurs */
 .voter-list{list-style:none;padding-left:0;}
