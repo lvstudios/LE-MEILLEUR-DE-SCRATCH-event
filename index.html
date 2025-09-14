@@ -18,31 +18,36 @@
       <button id="close-popup">J'ai compris</button>
     </div>
   </div>
+
   <header class="glass">
     <h1>LE MEILLEUR DE SCRATCH 2026</h1>
-    <p id="desc"></p>
+    <p id="desc">
+      Participe à l'évènement Scratch de l'année ! Découvre, like ou dislike les meilleurs projets du studio et partage ta créativité.
+    </p>
   </header>
+
   <main>
-    <section class="stats glass">
-      <div>
-        <h2>Nombre de projets</h2>
-        <span id="project-count">Chargement...</span>
-      </div>
-      <div>
-        <h2>Nombre de participants</h2>
-        <span id="participant-count">Chargement...</span>
-      </div>
-    </section>
-    <section id="projects-section" class="glass">
+    <section class="projects-section glass">
       <h2>Projets du studio</h2>
-      <ul id="projects-list">
-        <li>Chargement des projets...</li>
-      </ul>
+      <div class="projects-gallery">
+        <!-- Exemple de projet en iframe -->
+        <div class="project-card">
+          <iframe src="https://scratch.mit.edu/projects/855968961/embed" allowtransparency="true" width="285" height="200" frameborder="0" scrolling="no"></iframe>
+          <p>Nom du projet 1</p>
+        </div>
+        <div class="project-card">
+          <iframe src="https://scratch.mit.edu/projects/855970123/embed" allowtransparency="true" width="285" height="200" frameborder="0" scrolling="no"></iframe>
+          <p>Nom du projet 2</p>
+        </div>
+        <!-- Ajoute d'autres projets ici -->
+      </div>
     </section>
   </main>
+
   <footer class="glass">
     <p>&copy; 2026 LE MEILLEUR DE SCRATCH</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
