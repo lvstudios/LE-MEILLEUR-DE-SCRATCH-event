@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Description dynamique de l'évènement
+// Description dynamique
 document.getElementById("desc").textContent =
   "Participe à l'évènement Scratch de l'année ! Découvre, like ou dislike les meilleurs projets du studio, vote pour tes favoris et partage ta créativité avec la communauté Scratch. Les projets et participants sont mis à jour en direct. Rejoins le studio pour faire partie de l'aventure !";
 
@@ -40,24 +40,32 @@ function updateProjectActions(projectId, container) {
   dislikeBtn.classList.toggle('disliked', likesData.user === 'dislike');
 }
 
-// Récupère les projets du studio Scratch en utilisant l'API publique (non officielle)
-async function fetchStudioData() {
+// --- Récupération des infos du studio ---
+async function fetchStudioInfo() {
+  const studioId = '37057539';
+  const apiStudioUrl = `https://api.scratch.mit.edu/studios/${studioId}`;
+  try {
+    const res = await fetch(apiStudioUrl);
+    if (res.ok) {
+      const data = await res.json();
+      document.getElementById('project-count').textContent = data.project_count;
+      document.getElementById('participant-count').textContent = data.member_count;
+    }
+  } catch {
+    document.getElementById('project-count').textContent = "Erreur";
+    document.getElementById('participant-count').textContent = "Erreur";
+  }
+}
+
+// --- Récupération des projets du studio ---
+async function fetchProjects() {
   const studioId = '37057539';
   const apiProjectsUrl = `https://scratch.mit.edu/api/v1/studios/${studioId}/projects/?limit=60&offset=0`;
-  const apiMembersUrl = `https://scratch.mit.edu/api/v1/studios/${studioId}/members/?limit=1&offset=0`;
 
-  // Nombre de projets
-  let projectCount = 'N/A';
-  // Nombre de participants
-  let participantCount = 'N/A';
-
-  // Récupérer projets
   try {
     const projRes = await fetch(apiProjectsUrl);
     if (projRes.ok) {
       const projData = await projRes.json();
-      projectCount = projData.total_count || projData.length || 'N/A';
-      // Affichage dynamique des projets
       const listEl = document.getElementById('projects-list');
       listEl.innerHTML = '';
       if (projData.length > 0) {
@@ -114,18 +122,11 @@ async function fetchStudioData() {
     document.getElementById('projects-list').innerHTML =
       '<li>Impossible de charger les projets (connexion ou API indisponible).</li>';
   }
-
-  // Récupérer participants
-  try {
-    const memRes = await fetch(apiMembersUrl);
-    if (memRes.ok) {
-      const memData = await memRes.json();
-      participantCount = memData.total_count || memData.length || 'N/A';
-    }
-  } catch {}
-
-  document.getElementById('project-count').textContent = projectCount;
-  document.getElementById('participant-count').textContent = participantCount;
 }
 
-window.addEventListener('DOMContentLoaded', fetchStudioData);
+// --- Initialisation ---
+window.addEventListener('DOMContentLoaded', () => {
+  fetchStudioInfo();
+  fetchProjects();
+  setInterval(fetchProjects, 30000); // refresh toutes les 30s
+});
