@@ -1,89 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LE MEILLEUR DE SCRATCH NOËL : ANIMATION</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>LE MEILLEUR DE SCRATCH NOËL : ANIMATIONS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Canvas neige -->
-  <canvas id="snow-canvas" aria-hidden="true"></canvas>
 
-  <header class="site-header glass">
-    <div class="header-inner">
-      <h1>LE MEILLEUR DE SCRATCH</h1>
-      <h2 class="subtitle">NOËL : ANIMATION</h2>
-      <p class="lead">Uniquement des animations — le festival de la magie animée ! ❄️🎬</p>
-      <div class="header-cta">
-        <a id="open-studio" class="btn" href="https://scratch.mit.edu/studios/37057539" target="_blank" rel="noopener">Découvrir le studio</a>
-      </div>
-    </div>
-    <div class="snow-glow"></div>
+  <!-- En-tête -->
+  <header class="glass">
+    <h1>LE MEILLEUR DE SCRATCH NOËL : ANIMATIONS</h1>
+    <p>Découvrez les meilleures animations créées avec Scratch pour Noël !</p>
   </header>
 
-  <main>
-    <section class="glass section-intro">
-      <h3>Programme</h3>
-      <p>Vitrine spéciale Animations : courts, loops, génériques et expérimentations — toute la magie de Noël en pixels.</p>
-    </section>
+  <!-- Galerie d'animations -->
+  <section id="animations" class="glass category-section">
+    <h2>Animations du studio</h2>
+    <div id="projects-list" class="projects-gallery">
+      <!-- Les projets Scratch s'ajouteront ici -->
+    </div>
+  </section>
 
-    <section class="glass gallery-section" aria-label="Galerie d'animations">
-      <h3>Animations sélectionnées</h3>
-      <p class="muted">Cliquer sur une carte ouvre l'animation sur Scratch dans un nouvel onglet.</p>
+  <!-- Calendrier des événements -->
+  <section id="calendrier" class="glass category-section">
+    <h2>Calendrier des prochaines éditions</h2>
+    <iframe src="https://calendar.google.com/calendar/embed?src=c4d1e148a6e2b20dd3f3f44148b76f4203c11b902c22c4969162abdeff87944%40group.calendar.google.com&ctz=Europe/Paris" 
+            style="border:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+  </section>
 
-      <div id="gallery" class="gallery">
-        <!-- Exemple : remplace les id par de vrais IDs Scratch d'animations -->
-        <article class="card" data-id="855968961" tabindex="0">
-          <div class="thumb animated-thumb loop-1"></div>
-          <div class="card-body">
-            <h4>Neige Magique</h4>
-            <p class="author">par skygame_scratch</p>
-          </div>
-        </article>
+  <!-- À propos -->
+  <section id="a-propos" class="glass category-section">
+    <h2>À propos</h2>
+    <p>Ce site est dédié aux animations créées par les membres du studio "LE MEILLEUR DE SCRATCH". Profitez de l’ambiance de Noël et découvrez les créations des participants !</p>
+  </section>
 
-        <article class="card" data-id="855970123" tabindex="0">
-          <div class="thumb animated-thumb loop-2"></div>
-          <div class="card-body">
-            <h4>Petit Renne</h4>
-            <p class="author">par Je_sa1s_pas</p>
-          </div>
-        </article>
-
-        <article class="card" data-id="855972456" tabindex="0">
-          <div class="thumb animated-thumb loop-3"></div>
-          <div class="card-body">
-            <h4>Flocon Dance</h4>
-            <p class="author">par CreativeKid</p>
-          </div>
-        </article>
-
-        <!-- ajoute d'autres cards ici -->
-      </div>
-    </section>
-
-    <section class="glass info-section">
-      <h3>But de l'événement</h3>
-      <p>Mettre en avant les meilleures animations Scratch de la communauté pour Noël. Aucun vote public sur le site — simple exposition et célébration.</p>
-    </section>
-
-    <section class="glass footer-links">
-      <h3>Ressources</h3>
-      <ul>
-        <li><a href="https://scratch.mit.edu/studios/37057539" target="_blank" rel="noopener">Page du studio officiel</a></li>
-        <li><a href="https://scratch.mit.edu" target="_blank" rel="noopener">Scratch</a></li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="site-footer glass">
-    <p>&copy; 2026 LE MEILLEUR DE SCRATCH — Spécial Animations</p>
+  <!-- Footer -->
+  <footer class="glass">
+    <p>&copy; 2025 LE MEILLEUR DE SCRATCH NOËL</p>
   </footer>
 
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
-
-</body>
-</html>
-
