@@ -41,9 +41,7 @@
   <!-- Galerie de projets -->
   <section id="projects" class="glass category-section">
     <h2>Projets du studio</h2>
-    <div class="projects-gallery" id="projects-list">
-      <!-- Les projets seront ajoutés dynamiquement ici -->
-    </div>
+    <div id="projects-list">Chargement des projets...</div>
   </section>
 
   <!-- Voteurs -->
@@ -61,6 +59,50 @@
   <p>&copy; 2026 LE MEILLEUR DE SCRATCH</p>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  // --- Popup info ---
+  window.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('popup-info');
+    const closeBtn = document.getElementById('close-popup');
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // --- Charger les projets depuis projects.json ---
+  async function loadProjects() {
+    try {
+      const res = await fetch('/projects.json', {cache: "no-store"});
+      const projects = await res.json();
+      const container = document.getElementById('projects-list');
+      container.innerHTML = '';
+      
+      if(projects.length === 0){
+        container.textContent = "Aucun projet pour l'instant.";
+        return;
+      }
+
+      projects.forEach(p => {
+        const div = document.createElement('div');
+        div.className = "project-card";
+        div.innerHTML = `
+          <iframe src="https://scratch.mit.edu/projects/${p.id}/embed" width="285" height="200" frameborder="0" scrolling="no"></iframe>
+          <h3>${p.title}</h3>
+          <p>par ${p.author}</p>
+          <a href="${p.url}" target="_blank">Voir sur Scratch</a>
+        `;
+        container.appendChild(div);
+      });
+    } catch (e) {
+      console.error("Erreur loadProjects:", e);
+      document.getElementById('projects-list').textContent = "Impossible de charger les projets.";
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', loadProjects);
+</script>
+
 </body>
 </html>
+
