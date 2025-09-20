@@ -1,72 +1,81 @@
-// --- Popup ---
-window.addEventListener('DOMContentLoaded', () => {
-  const popup = document.getElementById('popup-info');
-  const closeBtn = document.getElementById('close-popup');
-  closeBtn.addEventListener('click', () => {
-    popup.style.display = 'none';
-    document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
-  });
-});
+/* Snow animation on canvas + interactivity for cards */
+(function(){
+  // Snow canvas
+  const canvas = document.getElementById('snow-canvas');
+  const ctx = canvas.getContext('2d');
+  let W = canvas.width = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+  const flakes = [];
 
-// --- Charger les projets depuis projects.json ---
-async function loadProjects() {
-  try {
-    const res = await fetch('/projects.json', { cache: "no-store" });
-    const projects = await res.json();
-    const container = document.getElementById('projects-list');
-    container.innerHTML = '';
+  function rand(min,max){ return Math.random()*(max-min)+min }
 
-    if (projects.length === 0) {
-      container.textContent = "Aucun projet pour l'instant.";
-      return;
+  function createFlakes(n=150){
+    for(let i=0;i<n;i++){
+      flakes.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        r: rand(0.8,3.8),
+        d: rand(0.5,1.8),
+        sway: rand(0.01,0.05),
+        ang: Math.random()*Math.PI*2
+      });
     }
-
-    projects.forEach(proj => {
-      const div = document.createElement('div');
-      div.classList.add('project-card');
-      div.innerHTML = `
-        <iframe src="https://scratch.mit.edu/projects/${proj.id}/embed" width="285" height="200" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-        <p>${proj.title}</p>
-        <div class="project-actions">
-          <button class="like-btn" data-id="${proj.id}">👍</button>
-          <button class="dislike-btn" data-id="${proj.id}">👎</button>
-          <span class="like-count" id="like-${proj.id}">0</span> | 
-          <span class="dislike-count" id="dislike-${proj.id}">0</span>
-        </div>
-      `;
-      container.appendChild(div);
-
-      // Likes/dislikes avec localStorage
-      const likeBtn = div.querySelector('.like-btn');
-      const dislikeBtn = div.querySelector('.dislike-btn');
-      const likeCount = document.getElementById(`like-${proj.id}`);
-      const dislikeCount = document.getElementById(`dislike-${proj.id}`);
-
-      // Récupérer données depuis localStorage si existant
-      let data = JSON.parse(localStorage.getItem(`scratch_likes_${proj.id}`)) || { like: 0, dislike: 0, user: null };
-      likeCount.textContent = data.like;
-      dislikeCount.textContent = data.dislike;
-
-      likeBtn.addEventListener('click', () => {
-        if (data.user === 'like') { data.like--; data.user = null; } 
-        else { if (data.user === 'dislike') { data.dislike--; } data.like++; data.user = 'like'; }
-        likeCount.textContent = data.like;
-        dislikeCount.textContent = data.dislike;
-        localStorage.setItem(`scratch_likes_${proj.id}`, JSON.stringify(data));
-      });
-
-      dislikeBtn.addEventListener('click', () => {
-        if (data.user === 'dislike') { data.dislike--; data.user = null; } 
-        else { if (data.user === 'like') { data.like--; } data.dislike++; data.user = 'dislike'; }
-        likeCount.textContent = data.like;
-        dislikeCount.textContent = data.dislike;
-        localStorage.setItem(`scratch_likes_${proj.id}`, JSON.stringify(data));
-      });
-    });
-  } catch (e) {
-    console.error("Erreur loadProjects:", e);
-    document.getElementById('projects-list').textContent = "Impossible de charger les projets.";
   }
-}
 
-window.addEventListener('DOMContentLoaded', loadProjects);
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    flakes.forEach(f=>{
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(255,255,255,${0.6 * (f.r/4)})`;
+      ctx.fill();
+      // move
+      f.ang += f.sway;
+      f.x += Math.sin(f.ang) * f.d * 0.9;
+      f.y += Math.cos(f.ang) * f.d + 0.6;
+      if(f.y > H + 10){ f.y = -10; f.x = Math.random()*W }
+      if(f.x > W + 20) f.x = -20;
+      if(f.x < -20) f.x = W + 20;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  // init
+  resize();
+  createFlakes(160);
+  draw();
+
+  // header CTA already links to studio via HTML
+
+  // gallery click: open project iframe in new tab (by data-id)
+  const gallery = document.getElementById('gallery');
+  gallery.addEventListener('click', (e)=>{
+    const card = e.target.closest('.card');
+    if(!card) return;
+    const id = card.getAttribute('data-id');
+    if(id) window.open(`https://scratch.mit.edu/projects/${id}`, '_blank', 'noopener');
+  });
+
+  // keyboard accessibility: Enter opens project
+  gallery.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){
+      const card = e.target.closest('.card');
+      if(!card) return;
+      const id = card.getAttribute('data-id');
+      if(id) window.open(`https://scratch.mit.edu/projects/${id}`, '_blank', 'noopener');
+    }
+  });
+
+  // small sparkle on hover
+  gallery.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('mouseenter', ()=> card.style.boxShadow = '0 30px 80px rgba(0,0,0,0.65)');
+    card.addEventListener('mouseleave', ()=> card.style.boxShadow = '');
+  });
+})();
