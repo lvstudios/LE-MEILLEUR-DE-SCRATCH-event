@@ -2,45 +2,35 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>LE MEILLEUR DE SCRATCH NOËL : ANIMATIONS</title>
+  <title>LE MEILLEUR DE SCRATCH - Édition Animation Noël</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- En-tête -->
-  <header class="glass">
-    <h1>LE MEILLEUR DE SCRATCH NOËL : ANIMATIONS</h1>
-    <p>Découvrez les meilleures animations créées avec Scratch pour Noël !</p>
-  </header>
-
-  <!-- Galerie d'animations -->
-  <section id="animations" class="glass category-section">
-    <h2>Animations du studio</h2>
-    <div id="projects-list" class="projects-gallery">
-      <!-- Les projets Scratch s'ajouteront ici -->
+  <nav>
+    <a href="index.html" class="active">Accueil</a>
+    <a href="programme.html">Programme</a>
+    <a href="projets.html">Projets</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <main>
+    <section class="hero animate">
+      <h1>LE MEILLEUR DE SCRATCH<br><span class="edition">Édition Animation Noël</span></h1>
+      <h2>Bienvenue à l'événement de Noël !</h2>
+      <p>
+        Explore le meilleur des créations Scratch spécial animation et fête.<br>
+        <strong>Événement indépendant et non affilié à Scratch ou MIT. <br>Ne donnez jamais vos données personnelles.</strong>
+      </p>
+      <img src="https://cdn.pixabay.com/photo/2013/07/13/12/46/christmas-160828_1280.png" class="noel-img animate" alt="Sapin de Noël">
+    </section>
+  </main>
+  <footer>
+    <div class="legal">
+      <strong>Note :</strong> Cet événement n’est pas affilié à Scratch, MIT ni à ses équipes. Ne partagez jamais vos données personnelles.
     </div>
-  </section>
-
-  <!-- Calendrier des événements -->
-  <section id="calendrier" class="glass category-section">
-    <h2>Calendrier des prochaines éditions</h2>
-    <iframe src="https://calendar.google.com/calendar/embed?src=c4d1e148a6e2b20dd3f3f44148b76f4203c11b902c22c4969162abdeff87944%40group.calendar.google.com&ctz=Europe/Paris" 
-            style="border:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-  </section>
-
-  <!-- À propos -->
-  <section id="a-propos" class="glass category-section">
-    <h2>À propos</h2>
-    <p>Ce site est dédié aux animations créées par les membres du studio "LE MEILLEUR DE SCRATCH". Profitez de l’ambiance de Noël et découvrez les créations des participants !</p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="glass">
-    <p>&copy; 2025 LE MEILLEUR DE SCRATCH NOËL</p>
   </footer>
-
-  <!-- Script -->
-  <script src="script.js"></script>
+  <div id="snow"></div>
+  <script src="snow.js"></script>
 </body>
 </html>
